@@ -1,0 +1,322 @@
+let allProducts = [];
+
+function getWishlist() {
+  return JSON.parse(localStorage.getItem('wishlist')) || [];
+}
+
+function setWishlist(arr) {
+  localStorage.setItem('wishlist', JSON.stringify(arr));
+}
+
+function isInWishlist(id) {
+  const wishlist = getWishlist();
+  return wishlist.some(item => item.id === id);
+}
+
+function addToWishlist(product) {
+  let wishlist = getWishlist();
+  if (!wishlist.some(item => item.id === product.id)) {
+    wishlist.push({ 
+      id: product.id,
+         name: product.name,
+          image: product.image,
+          price: product.current_price,
+          old_price: product.old_price,
+          updatePrice:product.current_price,
+          quantity: 1 });
+    setWishlist(wishlist);
+  }
+}
+
+function removeFromWishlist(productId) {
+  let wishlist = getWishlist();
+  wishlist = wishlist.filter(item => item.id !== productId);
+  setWishlist(wishlist);
+}
+
+function updateWishlistCount() {
+  const wishlistCount = document.querySelector('.wishlist-count');
+  if (wishlistCount) {
+    const wishlist = getWishlist();
+    wishlistCount.textContent = wishlist.length;
+    // wishlistCount.style.display = wishlist.length > 0 ? 'block' : 'none';
+  }
+}
+
+
+fetch('js/products.json')
+  .then(res => {
+    if (!res.ok) {
+      throw new Error(`HTTP error! status: ${res.status}`);
+    }
+    return res.json();
+  })
+  .then(data => {
+    allProducts = data;
+    console.log('Products loaded successfully:', allProducts.length, 'products');
+    renderProducts('all');
+  })
+  .catch(error => {
+    console.error('Error loading products:', error);
+  });
+
+
+function renderProducts(category) {
+  const grid = document.getElementById('productGrid');
+  grid.innerHTML = '';
+
+  console.log(`Filtering products for category: ${category}`);
+  let filtered = (category === 'all') ? allProducts : allProducts.filter(p => p.category === category);
+  console.log(`Filtered products count: ${filtered.length}`);
+  console.log(`First few filtered products:`, JSON.stringify(filtered.slice(0, 3), null, 2));
+
+  filtered.forEach((product, idx) => {
+    const wishClass = isInWishlist(product.id) ? 'bi-heart-fill' : 'bi-heart';
+    // const isInWishlist = window.isInWishlist ? window.isInWishlist(idx) : false;
+    grid.innerHTML += `
+    <div class="col-md-3 product-item" data-category="${product.category}">
+      <article class="product-card">
+        <figure>
+          <div class="product_thumb position-relative">
+            <a class="primary_img" href="javascript:void(0)" data-idx="${idx}">
+              <img src="${product.image}" alt="${product.name}">
+              <span class="action_links">
+                <button 
+                  class="btn-quick quick-view-btn" 
+                  data-idx="${idx}" 
+                  data-bs-toggle="modal" 
+                  data-bs-target="#quickViewModal">
+                  <i class="bi bi-eye"></i>
+                </button>
+              </span>
+            </a>
+          </div>
+          <figcaption class="product_content">
+            <h4 class="product_name">
+              <a href="product-details.html?id=${product.id}" class="product-link" data-idx="${idx}">${product.name}</a>
+            </h4>
+            <div class="price_box">
+              <span class="old_price">$${product.old_price}.00</span>
+              <span class="current_price">$${product.current_price}.00</span>
+            </div>
+            <div class="product_rating">
+              <ul class="pl-0 d-inline">
+                ${'<li class="d-inline"><a href="#"><i class="fa fa-star"></i></a></li>'.repeat(product.rating)}
+              </ul>
+              <span class="reviews-count">(${product.reviews} Reviews)</span>
+            </div>
+            <div class="d-flex align-items-center gap-2 mt-2">
+              <div class="btn-holder">
+                <button class="btn-hover btn-hover-2 hover-slide-up add-cart-btn" data-idx="${idx}">
+                  <span>Add To Cart</span>
+                </button>
+              </div>
+              <button type="button" class="wishlist-btn btn-square" data-idx="${idx}">
+                <i class="bi ${wishClass}"></i>
+              </button>
+                
+              </button>
+            </div>
+          </figcaption>
+        </figure>
+      </article>
+    </div>
+    `;
+  });
+
+  setupInteractivity(filtered);
+   updateWishlistCount();
+}
+
+
+// function addToWishlist(product) {
+//   let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+//   if (!wishlist.some(item => item.id === product.id)) {
+//     wishlist.push({
+//           id: product.id,
+//           name: product.name,
+//           image: product.image,
+//           price: product.current_price,
+//           old_price: product.old_price,
+//           updatePrice:product.current_price,
+//           quantity: 1
+//         });
+//     localStorage.setItem('wishlist', JSON.stringify(wishlist));
+//   }
+// }
+
+// function removeFromWishlist(productId) {
+//   let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+//   wishlist = wishlist.filter(item => item.id !== productId);
+//   localStorage.setItem('wishlist', JSON.stringify(wishlist));
+// }
+
+function setupInteractivity(allProducts) {
+  // Quick View Modal
+  document.querySelectorAll('.quick-view-btn').forEach(btn => {
+    btn.onclick = function(e) {
+      const idx = this.getAttribute('data-idx');
+      showQuickView(allProducts[idx]);
+    };
+  });
+
+  // Wishlist functionality
+  document.querySelectorAll('.wishlist-btn').forEach(btn => {
+    btn.onclick = function(e) {
+      const idx = parseInt(this.getAttribute('data-idx'), 10);
+      const product = allProducts[idx];
+      const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+      if (wishlist.some(item => item.id === product.id)) {
+        removeFromWishlist(product.id);
+        this.querySelector('i').classList.remove('bi-heart-fill');
+        this.querySelector('i').classList.add('bi-heart');
+      } else {
+        addToWishlist(product);
+        this.querySelector('i').classList.add('bi-heart-fill');
+        this.querySelector('i').classList.remove('bi-heart');
+      }
+      
+      updateWishlistCount();
+     
+    };
+  });
+
+
+  // Add to Cart
+  document.querySelectorAll('.add-cart-btn').forEach(btn => {
+    btn.onclick = function() {
+      const idx = parseInt(this.getAttribute('data-idx'), 10);
+      const product = allProducts[idx];
+      
+   
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      
+  
+      const existingItem = cart.find(item => item.id === product.id);
+      
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push({
+          id: product.id,
+          name: product.name,
+          image: product.image,
+          price: product.current_price,
+          old_price: product.old_price,
+          updatePrice:product.current_price,
+          quantity: 1
+        });
+      }
+      
+      console.log('Current cart before update:', cart); 
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`${product.name} added to cart!`);
+      updateCartCount(); 
+      // setTimeout(() => {
+      //   window.location.href = "cart.html";
+      // }, 2000);
+      
+      
+    };
+  });
+}
+
+// Modal  function
+function showQuickView(product) {
+  document.querySelector('#quickViewModal .modal-title').textContent = product.name;
+  document.querySelector('#quickViewModal .modal-img').src = product.image;
+  document.querySelector('#quickViewModal .modal-price').textContent = `$${product.current_price}.00`;
+  document.querySelector('#quickViewModal .modal-desc').textContent = `Rating: ${product.rating} stars | ${product.reviews} Reviews`;
+}
+
+// Tabs
+document.getElementById('productTabs').addEventListener('click', function(e) {
+  if(e.target.dataset.category){
+    document.querySelectorAll('#productTabs .nav-link').forEach(btn=>btn.classList.remove('active'));
+    e.target.classList.add('active');
+    renderProducts(e.target.dataset.category);
+  }
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  var current = window.location.pathname.split('/').pop();
+  if (!current || current === "") current = "index.html";
+  document.querySelectorAll('.custom-navbar-nav .nav-link').forEach(function(link) {
+    var linkPage = link.getAttribute('href');
+    if (linkPage === current) {
+      link.parentElement.classList.add("active");
+    }
+  });
+});
+
+
+
+document.querySelectorAll('.quick-view-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const idx = this.getAttribute('data-idx');
+   
+    showQuickView(allProducts[idx]);
+  });
+});
+
+
+function updateWishlistCount() {
+    const wishlistCount = document.getElementById('wishlist-count');
+    const wishlist= JSON.parse(localStorage.getItem('wishlist')) || [];
+      wishlistCount.textContent = wishlist.length;
+      // wishlistCount.style.display = wishlist.length > 0 ? 'block' : 'none';
+  }
+
+
+// Update cart count in header
+function updateCartCount() {
+  const cartCount = document.getElementById('cart-count');
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    cartCount.textContent = totalItems;
+    // cartCount.style.display = totalItems > 0 ? 'block' : 'none';
+}
+
+// newsletter-form
+document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+  let hasError = false;
+
+
+  const firstName = document.getElementById('first-name');
+  const email = document.getElementById('email');
+  const firstNameError = document.getElementById('first-name-error');
+  const emailError = document.getElementById('email-error');
+
+
+  firstNameError.textContent = "";
+  emailError.textContent = "";
+
+ 
+  if (!firstName.value.trim()) {
+    firstNameError.textContent = "First name is required.";
+    hasError = true;
+  } else if (!/^[a-zA-Z\s]{2,30}$/.test(firstName.value.trim())) {
+    firstNameError.textContent = "First name should contain only letters.";
+    hasError = true;
+  }
+
+  
+  if (!email.value.trim()) {
+    emailError.textContent = "Email address is required.";
+    hasError = true;
+  } else if (!/^[\w\.\-]+@[\w\.\-]+\.[a-zA-Z]{2,}$/.test(email.value.trim())) {
+    emailError.textContent = "Please enter a valid email address.";
+    hasError = true;
+  }
+
+  
+  if (hasError) e.preventDefault();
+});
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  updateCartCount();
+  updateWishlistCount();
+});

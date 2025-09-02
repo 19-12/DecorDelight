@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "name": "Red Velvet Sofa",
+    "image": "images/products/1.jpg",
+    "category": "women",
+    "old_price": 220,
+    "current_price": 180,
+    "reviews": 120,
+    "rating": 5
+  },
+  {
+    "id": 2,
+    "name": "Modern Chaise Lounge",
+    "image": "images/products/9.jpg",
+    "category": "women",
+    "old_price": 280,
+    "current_price": 230,
+    "reviews": 85,
+    "rating": 4
+  },
+  {
+    "id": 3,
+    "name": "Geometric Pendant Lights",
+    "image": "images/products/19.jpg",
+    "category": "men",
+    "old_price": 150,
+    "current_price": 120,
+    "reviews": 95,
+    "rating": 4
+  },
+  {
+    "id": 4,
+    "name": "Wooden Sofa Set",
+    "image": "images/products/6.jpg",
+    "category": "women",
+    "old_price": 520,
+    "current_price": 470,
+    "reviews": 110,
+    "rating": 5
+  },
+  {
+    "id": 5,
+    "name": "Classic Armchair",
+    "image": "images/products/3.jpg",
+    "category": "women",
+    "old_price": 300,
+    "current_price": 260,
+    "reviews": 75,
+    "rating": 4
+  },
+  {
+    "id": 6,
+    "name": "Floor Lamp",
+    "image": "images/products/20.jpg",
+    "category": "men",
+    "old_price": 180,
+    "current_price": 145,
+    "reviews": 60,
+    "rating": 3
+  },
+  {
+    "id": 7,
+    "name": "Contemporary Sofa",
+    "image": "images/products/21.jpg",
+    "category": "men",
+    "old_price": 600,
+    "current_price": 550,
+    "reviews": 130,
+    "rating": 5
+  },
+  {
+    "id": 8,
+    "name": "Decorative Vase Set",
+    "image": "images/products/d-4.jpg",
+    "category": "accessories",
+    "old_price": 140,
+    "current_price": 110,
+    "reviews": 45,
+    "rating": 4
+  },
+  {
+    "id": 9,
+    "name": "Classic Office Chair",
+    "image": "images/products/22.jpg",
+    "category": "men",
+    "old_price": 220,
+    "current_price": 190,
+    "reviews": 90,
+    "rating": 4
+  },
+  {
+    "id": 10,
+    "name": "Modern Wall Art",
+    "image": "images/products/d-1.jpg",
+    "category": "accessories",
+    "old_price": 125,
+    "current_price": 100,
+    "reviews": 30,
+    "rating": 3
+  },
+  {
+    "id": 11,
+    "name": "Rustic Table Lamp",
+    "image": "images/products/d-2.jpg",
+    "category": "accessories",
+    "old_price": 90,
+    "current_price": 75,
+    "reviews": 55,
+    "rating": 4
+  },
+  {
+    "id": 12,
+    "name": "Modern Pendant Set",
+    "image": "images/products/d-3.jpg",
+    "category": "accessories",
+    "old_price": 160,
+    "current_price": 145,
+    "reviews": 40,
+    "rating": 3
+  }
+]
