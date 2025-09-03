@@ -318,13 +318,268 @@
 
 
    <!-- Linking SwiperJS script -->
+   <!-- Linking SwiperJS script -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+function changeQty(btn, diff) {
+  const input = btn.parentNode.querySelector('input[type="number"]');
+  let val = parseInt(input.value);
+  if (diff < 0 && val <= 1) return;
+  input.value = val + diff;
+}
+function removeItem(btn) {
+  const item = btn.closest('.cart-item');
+  item.parentNode.removeChild(item);
+}
+</script>
+
+<!-- Tabs Script -->
+<script>
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+    document.querySelectorAll('.tab-panel').forEach(p => p.style.display='none');
+    document.querySelector('.' + this.dataset.tab + '-panel').style.display='block';
+  });
+});
+</script>
+
+
+<script>
+    // Image gallery logic
+    const mainImg = document.getElementById('mainImage');
+    const thumbs = document.querySelectorAll('.thumb-img');
+    thumbs.forEach(function(thumb) {
+        thumb.addEventListener('click', function() {
+            mainImg.src = this.src;
+            document.querySelector('.thumb-img.selected').classList.remove('selected');
+            this.classList.add('selected');
+        });
+    });
+    // Quantity selector
+    const qtyMinus = document.getElementById('qtyMinus');
+    const qtyPlus = document.getElementById('qtyPlus');
+    const qtyInput = document.getElementById('qtyInput');
+    qtyMinus.onclick = function() {
+        qtyInput.value = Math.max(1, parseInt(qtyInput.value) - 1);
+    }
+    qtyPlus.onclick = function() {
+        qtyInput.value = parseInt(qtyInput.value) + 1;
+    }
+    // Color dots selection (optional interactive, just UI)
+    document.querySelectorAll('.color-dot').forEach(function(dot) {
+        dot.onclick = function() {
+            document.querySelectorAll('.color-dot.selected').forEach(d => d.classList.remove('selected'));
+            this.classList.add('selected');
+        }
+    });
+</script>
+
+
+
+<script> document.addEventListener("DOMContentLoaded", function() {
+  const btn = document.getElementById("categoriesBtn");
+  const dropdown = document.getElementById("categoriesDropdown");
+
+  btn.addEventListener("click", function(e) {
+    e.stopPropagation();
+    dropdown.classList.toggle("show");
+  });
+
+  document.addEventListener("click", function() {
+    dropdown.classList.remove("show");
+  });
+
+  // Optional: handle option clicks
+  dropdown.querySelectorAll('.dropdown-option').forEach(opt => {
+    opt.addEventListener('click', function(e) {
+      alert(`Selected: ${this.textContent}`);
+      dropdown.classList.remove("show");
+    });
+  });
+});
+  </script>
+
+<script>
+  window.addEventListener('scroll', function () {
+    const nav = document.getElementById('top-nav');
+
+    if (window.scrollY > 100) {
+      nav.classList.add('nav-visible');
+    } else {
+      nav.classList.remove('nav-visible');
+    }
+  });
+</script>
+
+
+<script>
+  const tabs = document.querySelectorAll('#productTabs button');
+  const products = document.querySelectorAll('.product-item');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+     
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      const category = tab.getAttribute('data-category');
+
+      products.forEach(product => {
+        if (category === 'all' || product.dataset.category === category) {
+          product.style.display = 'block';
+        } else {
+          product.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
+
+<script>
+function openVideoPopup() {
+  const modal = document.getElementById('videoModal');
+  const video = document.getElementById('popupVideo');
+  modal.style.display = 'block';
+  video.currentTime = 0;
+  video.play();
+}
+
+function closeVideoPopup() {
+  const modal = document.getElementById('videoModal');
+  const video = document.getElementById('popupVideo');
+  modal.style.display = 'none';
+  video.pause();
+}
+</script>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const bars = document.querySelectorAll('.progress-bar');
+
+    bars.forEach((bar) => {
+      const target = parseInt(bar.dataset.target);
+      let width = 0;
+      const percentLabel = bar.parentElement.previousElementSibling.querySelector('.percent');
+
+      const interval = setInterval(() => {
+        if (width >= target) {
+          clearInterval(interval);
+        } else {
+          width++;
+          bar.style.width = width + '%';
+          percentLabel.textContent = width + '%';
+        }
+      }, 20); 
+    });
+  });
+</script>
+
+<script>
+  window.addEventListener("load", function () {
+   
+    setTimeout(() => {
+      document.body.classList.add("loaded");
+    }, 1000);
+  });
+</script>
+
+<script> 
+
+new Swiper('.card-wrapper', {
+    slidesPerView: 3,
+    loop: true,
+    spaceBetween: 25,
+
+     autoplay: {
+        delay: 3000, 
+        disableOnInteraction: false, 
+    },
+
+    // Pagination bullets
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+        dynamicBullets: true
+    },
+
+    // Navigation arrows
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+
+    // Responsive breakpoints
+   breakpoints: {
+    0: {
+        slidesPerView: 1
+    },
+    768: {
+        slidesPerView: 2
+    },
+    1024: {
+        slidesPerView: 3
+    },
+ 
+    }
+});
+</script>
+
+<script> 
+
+new Swiper('.card-wrapper-new', {
+    slidesPerView: 4,
+    loop: true,
+    spaceBetween: 20,
+
+     autoplay: {
+        delay: 3000, 
+        disableOnInteraction: false, 
+    },
+
+    // Pagination bullets
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+        dynamicBullets: true
+    },
+
+    // Navigation arrows
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+
+    // Responsive breakpoints
+   breakpoints: {
+    0: {
+        slidesPerView: 1
+    },
+    768: {
+        slidesPerView: 2
+    },
+    844: {
+        slidesPerView: 3
+    },
+
+    1024: {
+        slidesPerView: 4
+    },
+ 
+    }
+});
+
+</script>
+
+
 
 
   </body>
 
 </html>
-
 
 
 
