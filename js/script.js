@@ -83,6 +83,7 @@ function renderProducts(category) {
               <span class="action_links">
                 <button 
                   class="btn-quick quick-view-btn" 
+                  onclick="showQuickView(${product})"
                   data-idx="${idx}" 
                   data-bs-toggle="modal" 
                   data-bs-target="#quickViewModal">
@@ -223,10 +224,98 @@ function setupInteractivity(allProducts) {
 
 // Modal  function
 function showQuickView(product) {
-  document.querySelector('#quickViewModal .modal-title').textContent = product.name;
-  document.querySelector('#quickViewModal .modal-img').src = product.image;
-  document.querySelector('#quickViewModal .modal-price').textContent = `$${product.current_price}.00`;
-  document.querySelector('#quickViewModal .modal-desc').textContent = `Rating: ${product.rating} stars | ${product.reviews} Reviews`;
+ 
+            // Update product details
+            document.querySelector('.modal-title').textContent = product.name;
+            document.querySelector('.product-title').textContent = product.name;
+            document.querySelector('.price').textContent = `$${product.current_price}.00`;
+            document.querySelector('.old_price').textContent = `$${product.old_price}.00`;
+            
+            // Calculate discount percentage
+            const discount = Math.round(((product.old_price - product.current_price) / product.old_price) * 100);
+            document.querySelector('.discount').textContent = `-${discount}%`;
+            
+            // Update rating
+            const ratingContainer = document.querySelector('.rating-row');
+            ratingContainer.innerHTML = `
+                ${'<span class="star">&#9733;</span>'.repeat(product.rating)}
+                ${'<span class="star">&#9734;</span>'.repeat(5 - product.rating)}
+                <span class="score ms-1">${product.rating.toFixed(1)}</span>
+                <span>/ 5.0</span>
+                <span class="count ms-2">(${product.reviews})</span>
+            `;
+            
+            // Update product images
+            document.getElementById('mainImage').src = product.image;
+            document.querySelectorAll('.thumb-img').forEach((img, index) => {
+                img.src = product.image; // Using same image for all thumbnails for now
+            });
+            
+            // Update product description
+            document.querySelector('.prod-desc').textContent = product.description || 'No description available';
+            
+            // Update meta information
+            document.querySelector('.prod-meta').innerHTML = `
+                <span><strong>Category:</strong> ${product.category}</span>
+                <span><strong>Material:</strong> Premium Materials</span>
+                <span><strong>Dimensions:</strong> Standard Size</span>
+            `;
+            const addToCartBtn = document.querySelector('.addcart-btn');
+            if (addToCartBtn) {
+                addToCartBtn.onclick = function() {
+                    addToCartFromDetails(product);
+                };
+            }
+            function addToCartFromDetails(product) {
+    const quantity = parseInt(document.getElementById('qtyInput').value) || 1;
+    
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const existingItem = cart.find(item => item.id === product.id);
+    
+    if (existingItem) {
+        existingItem.quantity += quantity;
+    } else {
+        cart.push({
+            id: product.id,
+            name: product.name,
+            image: product.image,
+            price: product.current_price,
+            current_price: product.current_price, 
+            old_price: product.old_price,
+            updatePrice: product.current_price * quantity,
+            quantity: quantity
+        });
+    }
+    
+    localStorage.setItem('cart', JSON.stringify(cart));
+    
+    
+    updateCartCount();
+    
+    
+    window.location.href = 'cart.html';
+}
+// Quantity selector
+    const qtyMinus = document.getElementById('qtyMinus');
+    const qtyPlus = document.getElementById('qtyPlus');
+    const qtyInput = document.getElementById('qtyInput');
+    
+    qtyMinus.onclick = function() {
+        qtyInput.value = Math.max(1, parseInt(qtyInput.value) - 1);
+    };
+    
+    qtyPlus.onclick = function() {
+        qtyInput.value = parseInt(qtyInput.value) + 1;
+    };
+    
+    // Color selection
+    document.querySelectorAll('.color-dot').forEach(dot => {
+        dot.onclick = function() {
+            document.querySelectorAll('.color-dot.selected').forEach(d => d.classList.remove('selected'));
+            this.classList.add('selected');
+        };
+    });
+
 }
 
 // Tabs
@@ -320,3 +409,5 @@ document.addEventListener('DOMContentLoaded', function() {
   updateCartCount();
   updateWishlistCount();
 });
+
+

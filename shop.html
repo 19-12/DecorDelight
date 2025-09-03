@@ -189,17 +189,7 @@
             <button><i class="fa-solid fa-magnifying-glass"></i></button>
           </div>
 
-          <div class="categories-dropdown-wrapper">
-            <button class="categories-btn" id="categoriesBtn">
-              <span class="categories-icon">&#9776;</span> Categories
-            </button>
-            <div class="dropdown" id="categoriesDropdown">
-              <div class="dropdown-option">Living Room</div>
-              <div class="dropdown-option">Bedroom</div>
-              <div class="dropdown-option">Office</div>
-              <div class="dropdown-option">Outdoor</div>
-            </div>
-          </div>
+          
         </div>
       </div>
     </div>
@@ -216,20 +206,112 @@
               <span class="range-values">$10 - $1000</span>
             </div>
             <div class="range-slider">
-              <input style="width: 100%;" type="range" id="priceRange" min="10" max="1000" step="10" value="1000" onchange="filterProducts()" >
+              <input style="width: 100%;" type="range" id="priceRange" min="10" max="1000" step="10" value="1000" onchange="productRange()">
               <span id="priceValue">$1000</span>
             </div>
           </div>
 
+<div class="modal fade" id="quickViewModal" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Shelf Organizer</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row justify-content-center">
+        <div class="col-12 product-main-card">
+            <div class="row g-4 align-items-start">
+                <!-- LEFT: Images -->
+                <div class="col-lg-6 col-sm-12 position-relative img-gallery">
+                    <div class="side-icons">
+                        <button class="icon-btn" title="Add to Wishlist"><i class="bi bi-heart"></i></button>
+                        <button class="icon-btn" title="Share"><i class="bi bi-share"></i></button>
+                    </div>
+                    <img src="images/main-img1.jpg" id="mainImage" class="main-img mb-3" alt="Recliner Sofa Set"/>
+                    <div class="d-flex thumbnail-row">
+                         <img src="images/main-img1.jpg" class="thumb-img selected" data-index="0" alt="Main">
+                       
+                        <img src="images/main-img3.jpg" class="thumb-img" data-index="2" alt="Images">
+                         <img src="images/main-img2.jpg" class="thumb-img" data-index="1" alt="Images">
+                        
+                        
+                    </div>
+                </div>
+                <!-- RIGHT: Details -->
+                <div class="col-lg-6 col-sm-12 pl-5">
+                    <div class="product-title mb-4 pb-3">Recliner Sofa Set</div>
+                    <div class="price-row mb-3">
+                        <span class="discount">-36%</span>
+                        <span class="price">$149.99</span>
+                    </div>
+                    <div class="rating-row mb-3">
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9734;</span>
+                        <span class="score ms-1">4.6</span>
+                        <span>/ 5.0</span>
+                        <span class="count ms-2">(556)</span>
+                    </div>
+                    <div class="availability mb-3">
+                        <span>Availability:</span>
+                        <span class="check"><i class="bi bi-check-circle"></i></span>
+                        <span class="ms-1 text-success">In stock</span>
+                    </div>
+                    <div class="stock-text mb-4">Hurry up! only 34 product left in stock!</div>
+                    <div class="color-dot-row mb-2">
+                        <span class="color-dot selected .color-dot2" style="background:#ececec" title="White"></span>
+                        <span class="color-dot" style="background:#bfc3c5" title="Grey"></span>
+                        <span class="color-dot" style="background:#586c75" title="Blue"></span>
+                        <span class="color-dot" style="background:#dbc5c4" title="Pink"></span>
+                    </div>
+                    <div class="prod-meta mb-4">
+                        <span><strong>Colour :</strong> White</span>
+                        <span><strong>Material :</strong> Faux Leather Product</span>
+                        <span><strong>Dimensions :</strong> 81D x 76.2W x 96.5H Centimeters</span>
+                        <span><strong>Size :</strong> 39"D x 30.5"W x 41.3"H inch</span>
+                    </div>
+                    <div class="prod-desc  mb-4">
+                        Manual Reclining Mechanism: Enjoy personalized comfort adjustments with the manual reclining mechanism, allowing you to find the perfect position to relax and unwind after a long day.
+                    </div>
+                    <div class="cart-row align-items-center mb-3 flex-wrap">
 
+                        <div class="qty-control me-lg-3 mb-2 mb-lg-0">
+                            <button type="button" id="qtyMinus">-</button>
+                            <input type="number" id="qtyInput" min="1" value="1"/>
+                            <button type="button" id="qtyPlus">+</button>
+                        </div>
+
+                        <button class="addcart-btn ms-lg-2 mb-2 mb-lg-0" type="button">
+                            Add to Cart &nbsp;<i class="bi bi-arrow-right"></i>
+                        </button>
+                        <a href="#" class="wishlist-link ms-lg-3"><i class="bi bi-heart"></i> Add to Wishlist</a>
+                    </div>
+                    <div class="shipping-row">
+                        <span>Free 3-5 day shipping</span>
+                        <span>Tool-free assembly</span>
+                        <span>30-day trial</span>
+                    </div>
+                    <div class="footer-socials">
+                        <i class="bi bi-facebook"></i>
+                        <i class="bi bi-twitter"></i>
+                        <i class="bi bi-pinterest"></i>
+                        <i class="bi bi-instagram"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Product List Example -->
-<div id="productList">
-  <div class="product" data-price="180">Red Velvet Sofa - $180</div>
-  <div class="product" data-price="230">Modern Chaise Lounge - $230</div>
-  <div class="product" data-price="120">Geometric Pendant Lights - $120</div>
-  <!-- More products -->
-</div>
+
 
           <div class="filters-section">
             <div class="section-title">Filters</div>
@@ -265,8 +347,9 @@
 
         <div class="sidebar-right position-relative mb-4 mb-lg-0">
   <!-- Products section -->
-                    <div class="row" id="productGrid"></div>
-         
+                    <div class="row" id="productGrid">                  
+                    </div>
+                    
           
 
              <div class="top-pagination">
