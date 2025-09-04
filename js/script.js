@@ -340,7 +340,6 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-
 document.querySelectorAll('.quick-view-btn').forEach(btn => {
   btn.addEventListener('click', function() {
     const idx = this.getAttribute('data-idx');

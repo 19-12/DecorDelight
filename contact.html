@@ -638,7 +638,50 @@ new Swiper('.card-wrapper-new', {
 
 </script>
 
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+  const form = document.querySelector("form");
+  form.addEventListener("submit", function(event) {
+    // Get form fields
+    const fname = document.getElementById("fname");
+    const lname = document.getElementById("lname");
+    const email = document.getElementById("email");
+    const message = document.getElementById("message");
+    let valid = true;
+    // Regex for a simple email check
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    // Clear previous error styles
+    [fname, lname, email, message].forEach(field => field.style.borderColor = "");
+    
+    // First name validation
+    if (fname.value.trim() === "") {
+      fname.style.borderColor = "#d93a3a";
+      valid = false;
+    }
+    // Last name validation
+    if (lname.value.trim() === "") {
+      lname.style.borderColor = "#d93a3a";
+      valid = false;
+    }
+    // Email validation
+    if (!emailPattern.test(email.value)) {
+      email.style.borderColor = "#d93a3a";
+      valid = false;
+    }
+    // Message validation
+    if (message.value.trim() === "") {
+      message.style.borderColor = "#d93a3a";
+      valid = false;
+    }
+    // Prevent form submit if invalid
+    if (!valid) {
+      event.preventDefault();
+      alert("Please fill all fields correctly.");
+    }
+  });
+});
 
+</script>
 
 
   </body>
