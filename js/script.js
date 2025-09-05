@@ -67,8 +67,6 @@ function renderProducts(category) {
 
   console.log(`Filtering products for category: ${category}`);
   let filtered = (category === 'all') ? allProducts : allProducts.filter(p => p.category === category);
-  console.log(`Filtered products count: ${filtered.length}`);
-  console.log(`First few filtered products:`, JSON.stringify(filtered.slice(0, 3), null, 2));
 
   filtered.forEach((product, idx) => {
     const wishClass = isInWishlist(product.id) ? 'bi-heart-fill' : 'bi-heart';
@@ -246,9 +244,9 @@ function showQuickView(product) {
             `;
             
             // Update product images
-            document.getElementById('mainImage').src = product.image;
+            document.querySelector('.mainImage').src = product.image;
             document.querySelectorAll('.thumb-img').forEach((img, index) => {
-                img.src = product.image; // Using same image for all thumbnails for now
+                img.src = product.image; 
             });
             
             // Update product description

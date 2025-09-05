@@ -100,7 +100,7 @@
 
             <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0">
               <li><a class="nav-link" href="#"><img src="images/user.svg"></a></li>
-            <li><a class="nav-link" href="cart.html"><img src="images/cart.svg"><span class="cart-count badge bg-danger">0</span></a></li>
+            <li><a class="nav-link" href="cart.html"><img src="images/cart.svg"><span class=" badge bg-danger">0</span></a></li>
           </ul>
 
           <!-- <form class="d-flex mt-3" role="search">
@@ -148,7 +148,7 @@
         
 
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-<li><a class="nav-link heart-icon" href="wishlist.html"><i class="bi bi-heart"></i><span class="wishlist-count badge " id="wishlistCount">0</span></a></li>
+<li><a class="nav-link heart-icon" href="wishlist.html"><i class="bi bi-heart"></i><span class="wishlist-count badge " >0</span></a></li>
 						<li><a class="nav-link" href="#"><img src="images/user.svg"></a></li>
 						<li><a class="nav-link" href="cart.html"><img src="images/cart.svg"><span class="cart-count badge ">0</span></a></li>
 					</ul>
@@ -682,7 +682,35 @@ new Swiper('.card-wrapper-new', {
 });
 
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  function updateCartAndWishlistCounts() {
+    // CART
+    const cartCountElement = document.querySelector('.cart-count');
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let totalCartItems = cart.reduce((sum, item) => sum + (item.quantity ? parseInt(item.quantity) : 1), 0);
+    if (cartCountElement) {
+      cartCountElement.textContent = totalCartItems;
+    }
 
+    // WISHLIST
+    const wishlistCountElement = document.querySelector('.wishlist-count');
+    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    let totalWishlistItems = wishlist.length;
+    if (wishlistCountElement) {
+      wishlistCountElement.textContent = totalWishlistItems;
+    }
+
+    console.log("Cart:", cart, "Wishlist:", wishlist);
+  }
+
+  // Initial load
+  updateCartAndWishlistCounts();
+
+  // Update counts whenever storage changes (e.g. from another tab or function)
+  window.addEventListener("storage", updateCartAndWishlistCounts);
+});
+</script>
 
   </body>
 

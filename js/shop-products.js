@@ -201,7 +201,7 @@ function updateCartCount() {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
     cartCount.textContent = totalItems;
-    cartCount.style.display = totalItems > 0 ? 'block' : 'none';
+    // cartCount.style.display = totalItems > 0 ? 'block' : 'none';
   }
 }
 
@@ -245,7 +245,7 @@ function showQuickView(productId) {
       <span>/ 5.0</span>
       <span class="count ms-2">(${product.reviews})</span>
   `;
-  document.getElementById('mainImage').src = product.image;
+  document.querySelector('.mainImage').src = product.image;
   document.querySelectorAll('.thumb-img').forEach((img, index) => {
       img.src = product.image;
   });
