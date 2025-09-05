@@ -31,9 +31,6 @@
 }
 
 
-
-element.style {
-}
 .product-card * {
     transition: all var(--transition-fast);
 }
@@ -395,13 +392,17 @@ body.loaded #loader {
     font-weight: 700;
     color: #ffffff;
     margin-bottom: 30px; }
+
     @media (min-width: 1400px) {
       .hero h1 {
         font-size: 54px; } }
+
   .hero p {
     color: rgba(255, 255, 255, 0.5);
-    margin-botom: 30px; }
+    margin-bottom: 30px; }
+
   .hero .hero-img-wrap {
+    
     position: relative; }
     .hero .hero-img-wrap img {
       position: relative;
@@ -713,9 +714,10 @@ pointer-events: auto;
   .we-help-section .imgs-grid {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: (1fr)[27];
+    /* -ms-grid-columns: (1fr)[27]; */
     grid-template-columns: repeat(27, 1fr);
     position: relative; }
+
     .we-help-section .imgs-grid:before {
       position: absolute;
       content: "";
@@ -1129,7 +1131,7 @@ background-image: url(../images/ftr-map1.png);
 
 /* Newsletter Section */
 .newsletter {
-  background: rgb(209 154 70 / 89%) 
+  background: rgb(209 154 70 / 89%);
   border-radius: 20px;
   padding: 40px 20px;
   max-width: 1200px;
@@ -1342,9 +1344,10 @@ textarea {
     color: rgba(0, 0, 0, 0.8); }
   .site-blocks-table tbody tr:first-child td {
     border-top: 1px solid #ce9e51  !important; }
+
   .site-blocks-table .btn {
     background: none !important;
-    color: #2d343b2d343b;
+    color: #2d343b;
     border: none;
     height: auto !important; }
 
@@ -1353,7 +1356,7 @@ textarea {
   border-bottom-width: 1px !important; }
 
 .site-block-order-table td, .site-block-order-table th {
-  color: #2d343b2d343b; }
+  color: #2d343b; }
 
 .couponcode-wrap input {
   border-radius: 10px !important; }
@@ -1869,7 +1872,7 @@ flex-direction: row;
 }
 .icon, .icon::before {
     font-family: elementskit !important;
-    speak: none;
+    speak-as: none;
     font-style: normal;
     font-weight: 400;
     font-variant: normal;
@@ -4608,4 +4611,5 @@ article .read-more:hover, .card .read-more:hover {
 
  .remove-item {
         top: 13px;
+}
     }
