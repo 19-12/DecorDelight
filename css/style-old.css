@@ -1601,8 +1601,6 @@ textarea {
   text-align: center;
   transition: all 0.3s ease-in-out;
   height: 100%;
- display: flex
-;
 }
 
 .feature-box:hover {
@@ -2543,7 +2541,7 @@ position: relative;
 
 .btn-hover-2 span {
   color: #fff;
-  /* border: 1px solid rgb(28, 31, 30); */
+  border: 1px solid rgb(28, 31, 30);
   transition: color 0.2s;
 }
 

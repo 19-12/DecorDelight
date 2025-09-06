@@ -1671,14 +1671,16 @@ function closeVideoPopup() {
 </script> -->
 
 <script>
-  // Show the popup on page load
+  // Show the popup on page load only if not shown before
 window.addEventListener("DOMContentLoaded", function() {
-  document.getElementById('homePromoPopup').style.display = "flex";
+  if (!sessionStorage.getItem('promoPopupShown')) {
+    document.getElementById('homePromoPopup').style.display = "flex";
+    sessionStorage.setItem('promoPopupShown', 'true');
+  }
 });
 function closePromoPopup() {
   document.getElementById('homePromoPopup').style.display = "none";
 }
-
 </script>
 
 	</body>
