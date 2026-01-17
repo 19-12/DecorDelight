@@ -56,6 +56,7 @@ function renderProducts() {
               <span class="action_links">
                 <button 
                   class="btn-quick quick-view-btn" 
+                  onclick="showQuickView(${product})"
                   data-idx="${idx}" 
                   data-bs-toggle="modal" 
                   data-bs-target="#quickViewModal">
@@ -181,6 +182,9 @@ function updateCartCount() {
     cartCount.style.display = totalItems > 0 ? 'block' : 'none';
   }
 }
+
+
+
 
 // Initialize counts on page load
 document.addEventListener('DOMContentLoaded', function() {

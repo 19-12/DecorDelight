@@ -105,16 +105,16 @@
             <li><a class="nav-link" href="shop.html">Shop</a></li>
             <li><a class="nav-link" href="project.html">Projects</a></li>
            
-            <li><a class="nav-link" href="services.html">Services</a></li>
+          
             <li><a class="nav-link" href="blog.html">Blog</a></li>
             <li><a class="nav-link" href="contact.html">Contact us </a></li> 
 
             </ul>
 
-            <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0">
+            <!-- <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0">
               <li><a class="nav-link" href="wishlist.html"><img src="images/user.svg"></a></li>
             <li><a class="nav-link" href="cart.html"><img src="images/cart.svg"><span class="cart-count badge bg-danger">0</span></a></li>
-          </ul>
+          </ul> -->
 
           <!-- <form class="d-flex mt-3" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -137,7 +137,7 @@
 	<nav id="top-nav" class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark nav-ber" arial-label="DecorDelight navigation bar">
 
 			<div class="container nav-section">
-				<a class="navbar-brand" href="index.html"><img class="w-100 img-fluid" src="images/logo.png"><span></span></a>
+				<a class="navbar-brand" href="index.html"><img class="w-100 img-fluid"  src="images/logo.png"><span></span></a>
 
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsDecorDelight" aria-controls="navbarsDecorDelight" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
@@ -145,14 +145,14 @@
 
 				<div class="collapse navbar-collapse" id="navbarsDecorDelight">
 					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-						<li class="nav-item active">
+						<li class="nav-item">
 							<a class="nav-link" href="index.html">Home</a>
 						</li>
             <li><a class="nav-link" href="about.html">About us</a></li>
 						<li><a class="nav-link" href="shop.html">Shop</a></li>
             <li><a class="nav-link" href="project.html">Projects</a></li>
 						
-						<li><a class="nav-link" href="services.html">Services</a></li>
+					
 						<li><a class="nav-link" href="blog.html">Blog</a></li>
 						<li><a class="nav-link" href="contact.html">Contact us </a></li> 
 
@@ -168,7 +168,9 @@
 				</div>
 			</div>
 				
-		</nav>  </header>
+		</nav> 
+  
+  </header>
 
     <!-- Begin Home Promo Popup -->
 <div id="homePromoPopup" class="promo-popup-overlay">
@@ -325,36 +327,93 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class="row">
-          <div class="col-md-6">
-            <img id="mainImage" src="images/product-1.png" class="img-fluid mb-3" alt="Product Image">
-            <div class="d-flex gap-2">
-              <img src="images/product-1.png" class="img-thumbnail thumb-img" width="60" onclick="changeImage(this)">
-              <img src="images/product-2.png" class="img-thumbnail thumb-img" width="60" onclick="changeImage(this)">
-              <img src="images/product-3.png" class="img-thumbnail thumb-img" width="60" onclick="changeImage(this)">
+        <div class="row justify-content-center">
+        <div class="col-12 product-main-card">
+            <div class="row g-4 align-items-start">
+                <!-- LEFT: Images -->
+                <div class="col-lg-6 col-sm-12 position-relative img-gallery">
+                    <div class="side-icons">
+                        <button class="icon-btn" title="Add to Wishlist"><i class="bi bi-heart"></i></button>
+                        <button class="icon-btn" title="Share"><i class="bi bi-share"></i></button>
+                    </div>
+                   <img src="images/main-img1.jpg" class="main-img mb-3 mainImage" alt="Recliner Sofa Set"/>
+                     <!-- <div class="d-flex thumbnail-row" id="thumbnailRow"></div> -->
+                    <div class="d-flex thumbnail-row">
+                         <img src="images/main-img1.jpg" class="mainImage selected thumb-img" id="thumb-img1" alt="Main">
+                       
+                        <img src="images/main-img3.jpg" class="thumb-img"  id="thumb-img2" data-index="2" alt="Images">
+                         <img src="images/main-img2.jpg" class="thumb-img" id="thumb-img3" data-index="1" alt="Images">
+                        <!-- <img src="images/main-img4.jpg" class="thumb-img"  id="thumb-img4" data-index="3" alt="Images">
+                        <img src="images/main-img5.jpg" class="thumb-img"  id="thumb-img5" data-index="5" alt="Images"> -->
+                    </div>
+                </div>
+                <!-- RIGHT: Details -->
+                <div class="col-lg-6 col-sm-12 pl-5">
+                    <div class="product-title mb-4 pb-3 fs-2">Recliner Sofa Set</div>
+                    <div class="price-row mb-3">
+                        <span class="discount">-36%</span>
+                        <span class="price">$149.99</span>
+                    </div>
+                    <div class="rating-row mb-3">
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9734;</span>
+                        <span class="score ms-1">4.6</span>
+                        <span>/ 5.0</span>
+                        <span class="count ms-2">(556)</span>
+                    </div>
+                    <div class="availability mb-3">
+                        <span>Availability:</span>
+                        <span class="check"><i class="bi bi-check-circle"></i></span>
+                        <span class="ms-1 text-success">In stock</span>
+                    </div>
+                    <div class="stock-text mb-4">Hurry up! only 34 product left in stock!</div>
+                    <div class="color-dot-row mb-2">
+                        <span class="color-dot selected .color-dot2" style="background:#ececec" title="White"></span>
+                        <span class="color-dot" style="background:#bfc3c5" title="Grey"></span>
+                        <span class="color-dot" style="background:#586c75" title="Blue"></span>
+                        <span class="color-dot" style="background:#dbc5c4" title="Pink"></span>
+                    </div>
+                    <div class="prod-meta mb-4">
+                        <span><strong>Colour :</strong> White</span>
+                        <span><strong>Material :</strong> Faux Leather Product</span>
+                        <span><strong>Dimensions :</strong> 81D x 76.2W x 96.5H Centimeters</span>
+                        <span><strong>Size :</strong> 39"D x 30.5"W x 41.3"H inch</span>
+                    </div>
+                    <div class="prod-desc  mb-4">
+                        Manual Reclining Mechanism: Enjoy personalized comfort adjustments with the manual reclining mechanism, allowing you to find the perfect position to relax and unwind after a long day.
+                    </div>
+                    <div class="cart-row align-items-center mb-3 flex-wrap">
+
+                        <div class="qty-control me-lg-3 mb-2 mb-lg-0">
+                            <button type="button" id="qtyMinus">-</button>
+                            <input type="number" id="qtyInput" min="1" value="1"/>
+                            <button type="button" id="qtyPlus">+</button>
+                        </div>
+
+                        <button class="addcart-btn ms-lg-2 mb-2 mb-lg-0" type="button">
+                            Add to Cart &nbsp;<i class="bi bi-arrow-right"></i>
+                        </button>
+                        <a href="#" class="wishlist-link ms-lg-3"><i class="bi bi-heart"></i> Add to Wishlist</a>
+                    </div>
+                    <div class="shipping-row">
+                        <span>Free 3-5 day shipping</span>
+                        <span>Tool-free assembly</span>
+                        <span>30-day trial</span>
+                    </div>
+                    <div class="footer-socials">
+                        <i class="bi bi-facebook"></i>
+                        <i class="bi bi-twitter"></i>
+                        <i class="bi bi-pinterest"></i>
+                        <i class="bi bi-instagram"></i>
+                    </div>
+                </div>
+
             </div>
-          </div>
-          <div class="col-md-6">
-            <h4>Shelf Organizer</h4>
-            <p class="text-muted">$65.00</p>
-            <p>
-              What separates Westy from all other web design agencies is the ability to offer the most Friendly Experience you can imagine nulla metus metus ullamcorper vel tincidunt sed.
-            </p>
-            <ul>
-              <li>LED chip lamp</li>
-              <li>Long life time</li>
-              <li>Color temperature high</li>
-              <li>Rendering index clear</li>
-            </ul>
-            <div class="d-flex align-items-center mb-3">
-              <input type="number" class="form-control w-auto me-2" value="1" min="1">
-              <button class="btn btn-primary">Add to cart</button>
-            </div>
-            <p><strong>SKU:</strong> office</p>
-            <p><strong>Categories:</strong> Furniture, Shop</p>
-            <p><strong>Tags:</strong> furniture</p>
-          </div>
         </div>
+    </div>
       </div>
     </div>
   </div>
@@ -449,13 +508,12 @@
     
 
       <div class="content__item"> 
-      	<button class="button button--pan"> <a href="#" class=""> <span> Read More </span>  <i class="bi bi-arrow-right ms-2"></i> </a> </button> 
+      	<button class="button button--pan"> <a href="about.html"> <span> Read More </span>  <i class="bi bi-arrow-right ms-2"></i> </a> </button> 
       </div>
 
  </div>
 
-  <div class="col-lg-6 border-left pl-5">
- 	 <div class="d-flex align-items-center">
+  <div class="col-lg-6 border-left pl-lg-5 pl-sm-0"> <div class="d-flex align-items-center">
           <div class="bg-dark text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
             <i class="bi bi-telephone-fill"></i>
           </div>
@@ -645,7 +703,7 @@
 <!-- Video Section -->
 <section class="video-section">
   <div class="video-poster" onclick="openVideoPopup()">
-    <img src="images/poster.jpg" alt="Video Poster">
+    <img src="images/poster.jpg" alt="Video Poster"class="img-fluid">
     <button class="play-button"> <img src="images/play-button1.png">   </button>
   </div>
 </section>
@@ -1245,7 +1303,7 @@ home </span> </h2>
 
 		
     <div class="newsletter">
-     <div class="row justify-content-center align-items-center col-lg-8 offset-2"> 
+     <div class="row justify-content-center align-items-center col-lg-8 offset-lg-2 offset-sm-0 ">
 
     <h2>Subscribe to our newsletter</h2>
 	<form class="newsletter-form" id="newsletter-form">
@@ -1273,7 +1331,7 @@ home </span> </h2>
 
 					<div class="col-lg-8">
 						<div class="row links-wrap">
-							<div class="col-6 col-sm-6 col-md-4 gallary-tilte">
+							<div class="col-lg-4 col-md-6 col-sm-12 gallary-tilte">
                 <h3> Information </h3>
 								<ul class="list-unstyled">
 									<li><a href="about.html">About us</a></li>
@@ -1283,7 +1341,7 @@ home </span> </h2>
 								</ul>
 							</div>
 
-							<div class="col-6 col-sm-6 col-md-4 gallary-tilte">
+					<div class="col-lg-4 col-md-6 col-sm-12 gallary-tilte">
                  <h3> Services </h3>
 								<ul class="list-unstyled">
 									<li><a href="project.html">Our Latest Projects</a></li>
@@ -1292,7 +1350,7 @@ home </span> </h2>
 								</ul>
 							</div>
 
-									<div class="col-6 col-sm-6 col-md-4 gallary-tilte">
+							<div class="col-lg-4 col-md-6 col-sm-12 gallary-tilte">
                     <h3> Contact Us </h3>
 
                    <ul class="contact-info list-unstyled">
@@ -1313,7 +1371,7 @@ home </span> </h2>
             </p>
 						</div>
 
-						<div class="col-lg-6 text-center text-lg-end">
+					<div class="col-lg-6 text-center text-lg-end ">
 							<ul class="list-unstyled d-inline-flex ms-auto">
 								<li class="px-2"><a href="terms.html">Terms &amp; Conditions</a></li>   <li>|</li>
 								<li class="px-2"><a href="privacy.html">Privacy Policy</a></li>
@@ -1614,15 +1672,21 @@ function closeVideoPopup() {
 </script> -->
 
 <script>
-  // Show the popup on page load
-window.addEventListener("DOMContentLoaded", function() {
-  document.getElementById('homePromoPopup').style.display = "flex";
-});
-function closePromoPopup() {
-  document.getElementById('homePromoPopup').style.display = "none";
-}
+  // Show the popup on page load only if not shown before
+  window.addEventListener("DOMContentLoaded", function() {
+    if (!sessionStorage.getItem('promoPopupShown')) {
+      document.getElementById('homePromoPopup').style.display = "flex";
+      sessionStorage.setItem('promoPopupShown', 'true');
+    }
+  });
 
+  // Function to close the promo popup
+  function closePromoPopup() {
+    document.getElementById('homePromoPopup').style.display = "none";
+  }
 </script>
+
+  
 
 	</body>
 

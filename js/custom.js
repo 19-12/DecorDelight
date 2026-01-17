@@ -71,3 +71,24 @@
 
 
 })()
+
+ // Get current page URL path
+  const currentPage = window.location.pathname.split("/").pop() || "index.html";
+
+  // Select all navbar links
+  const navLinks = document.querySelectorAll(".navbar-nav li");
+
+   navLinks.forEach(link => {
+    let href = link.getAttribute("href");
+	// console.log(link.getAttribute("href"));
+    // Skip if no href found
+    if (!href) return;
+
+    let linkPage = href.split("/").pop();
+
+    if (linkPage === currentPage) {
+      link.classList.add("active");
+    } else {
+      link.classList.remove("active");
+    }
+  });

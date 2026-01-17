@@ -92,16 +92,16 @@
             <li><a class="nav-link" href="shop.html">Shop</a></li>
             <li><a class="nav-link" href="project.html">Projects</a></li>
            
-            <li><a class="nav-link" href="services.html">Services</a></li>
+        
             <li><a class="nav-link" href="blog.html">Blog</a></li>
             <li><a class="nav-link" href="contact.html">Contact us </a></li> 
 
             </ul>
-
+<!-- 
             <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0">
               <li><a class="nav-link" href="#"><img src="images/user.svg"></a></li>
             <li><a class="nav-link" href="cart.html"><img src="images/cart.svg"><span class="cart-count badge bg-danger">0</span></a></li>
-          </ul>
+          </ul> -->
 
           <!-- <form class="d-flex mt-3" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -139,7 +139,7 @@
 						<li><a class="nav-link" href="shop.html">Shop</a></li>
             <li><a class="nav-link" href="project.html">Projects</a></li>
 						
-						<li><a class="nav-link" href="services.html">Services</a></li>
+				
 						<li><a class="nav-link" href="blog.html">Blog</a></li>
 						<li><a class="nav-link" href="contact.html">Contact us </a></li> 
 
@@ -147,10 +147,10 @@
 
         
 
-					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+				<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
 <li><a class="nav-link heart-icon" href="wishlist.html"><i class="bi bi-heart"></i><span class="wishlist-count badge " id="wishlistCount">0</span></a></li>
 						<li><a class="nav-link" href="#"><img src="images/user.svg"></a></li>
-						<li><a class="nav-link" href="cart.html"><img src="images/cart.svg"><span class="cart-count badge ">0</span></a></li>
+						<li><a class="nav-link" href="cart.html"><img src="images/cart.svg"><span class="cart-count badge " id="cart-count">0</span></a></li>
 					</ul>
 				</div>
 			</div>
@@ -199,24 +199,7 @@
                     </div></span>
   </div>
 
-  <div class="col-lg-6 search-section justify-content-end">
-<div class="search-style-4 mt-30">
-              <input type="text" placeholder="Search">
-              <button><i class="fa-solid fa-magnifying-glass"></i></button>
-            </div>
-
-    <div class="categories-dropdown-wrapper">
-      <button class="categories-btn" id="categoriesBtn">
-        <span class="categories-icon">&#9776;</span> Categories
-      </button>
-      <div class="dropdown" id="categoriesDropdown">
-        <div class="dropdown-option">Living Room</div>
-        <div class="dropdown-option">Bedroom</div>
-        <div class="dropdown-option">Office</div>
-        <div class="dropdown-option">Outdoor</div>
-      </div>
-    </div>
-  </div>
+ 
 
 </div>
   </div>
@@ -236,14 +219,15 @@
                         <button class="icon-btn" title="Add to Wishlist"><i class="bi bi-heart"></i></button>
                         <button class="icon-btn" title="Share"><i class="bi bi-share"></i></button>
                     </div>
-                    <img src="images/main-img1.jpg" id="mainImage" class="main-img mb-3" alt="Recliner Sofa Set"/>
+                    <img src="images/main-img1.jpg" class="main-img mb-3 mainImage" alt="Recliner Sofa Set"/>
+                     <!-- <div class="d-flex thumbnail-row" id="thumbnailRow"></div> -->
                     <div class="d-flex thumbnail-row">
-                         <img src="images/main-img1.jpg" class="thumb-img selected" data-index="0" alt="Main">
+                         <img src="images/main-img1.jpg" class="mainImage selected thumb-img" id="thumb-img1" alt="Main">
                        
-                        <img src="images/main-img3.jpg" class="thumb-img" data-index="2" alt="Images">
-                         <img src="images/main-img2.jpg" class="thumb-img" data-index="1" alt="Images">
-                        <img src="images/main-img4.jpg" class="thumb-img" data-index="3" alt="Images">
-                        <img src="images/main-img5.jpg" class="thumb-img" data-index="5" alt="Images">
+                        <img src="images/main-img3.jpg" class="thumb-img"  id="thumb-img2" data-index="2" alt="Images">
+                         <img src="images/main-img2.jpg" class="thumb-img" id="thumb-img3" data-index="1" alt="Images">
+                        <img src="images/main-img4.jpg" class="thumb-img"  id="thumb-img4" data-index="3" alt="Images">
+                        <img src="images/main-img5.jpg" class="thumb-img"  id="thumb-img5" data-index="5" alt="Images">
                     </div>
                 </div>
                 <!-- RIGHT: Details -->
@@ -402,11 +386,14 @@
   <div class="promo-bg"></div>
   <div class="promo-card-content">
     <img class="promo-logo" src="images/Logo-2.png" />
-    <div class="promo-title">EARLY BLACK FRIDAY IN AUGUST</div>
+     <div class="promo-popup-title">EARLY BLACK FRIDAY IN September</div>
     <div class="promo-offer">30% Off</div>
     <div class="promo-desc">Your New Room Design decoration</div>
-    <button class="promo-btn">GET DEAL NOW</button>
-    <div class="promo-limited">LIMITED TIME ONLY</div>
+     <button class="btn-hover btn-hover-2 hover-slide-up">
+          <a href="shop.html" class="">
+                  <span>GET DEAL NOW</span></a>
+                </button>
+    <div class="promo-limited">LIMITED TIME ONLY</div> 
   </div>
 </div>
   </div>
@@ -694,7 +681,7 @@
 
 		
     <div class="newsletter">
-     <div class="row justify-content-center align-items-center col-lg-8 offset-2"> 
+     <div class="row justify-content-center align-items-center col-lg-8 offset-lg-2 offset-sm-0 ">
 
     <h2>Subscribe to our newsletter</h2>
 	<form class="newsletter-form" id="newsletter-form">
@@ -709,8 +696,8 @@
 
 					<div class="row g-5 mb-5">
 					<div class="col-lg-4">
-						<div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">DecorDelight<span>.</span></a></div>
-						<p class="mb-4">Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant</p>
+						<div class="mb-4 footer-logo-wrap"><a href="index.html" class="footer-logo"><img class="w-50 img-fluid" src="images/logo.png"> <span></span></a></div>
+						<p class="mb-4">We wanted a modern look without sacrificing comfort—and that’s exactly what we got. The interiors reflect warmth and sophistication in perfect balance.</p>
 
 						<ul class="list-unstyled custom-social">
 							<li><a href="#"><span class="fa fa-brands fa-facebook-f"></span></a></li>
@@ -722,7 +709,7 @@
 
 					<div class="col-lg-8">
 						<div class="row links-wrap">
-							<div class="col-6 col-sm-6 col-md-4 gallary-tilte">
+							<div class="col-lg-4 col-md-6 col-sm-12 gallary-tilte">
                 <h3> Information </h3>
 								<ul class="list-unstyled">
 									<li><a href="about.html">About us</a></li>
@@ -732,7 +719,7 @@
 								</ul>
 							</div>
 
-							<div class="col-6 col-sm-6 col-md-4 gallary-tilte">
+					<div class="col-lg-4 col-md-6 col-sm-12 gallary-tilte">
                  <h3> Services </h3>
 								<ul class="list-unstyled">
 									<li><a href="project.html">Our Latest Projects</a></li>
@@ -741,7 +728,7 @@
 								</ul>
 							</div>
 
-									<div class="col-6 col-sm-6 col-md-4 gallary-tilte">
+							<div class="col-lg-4 col-md-6 col-sm-12 gallary-tilte">
                     <h3> Contact Us </h3>
 
                    <ul class="contact-info list-unstyled">
@@ -762,7 +749,7 @@
             </p>
 						</div>
 
-						<div class="col-lg-6 text-center text-lg-end">
+					<div class="col-lg-6 text-center text-lg-end ">
 							<ul class="list-unstyled d-inline-flex ms-auto">
 								<li class="px-2"><a href="terms.html">Terms &amp; Conditions</a></li>   <li>|</li>
 								<li class="px-2"><a href="privacy.html">Privacy Policy</a></li>
@@ -775,6 +762,7 @@
 			</div>
 		</footer>
 		<!-- End Footer Section -->	
+	
 
 	<script src="js/cart.js"></script>
 		<script src="js/script.js"></script>
@@ -1038,8 +1026,6 @@ new Swiper('.card-wrapper-new', {
 </script>
 
 
-
-
-  </body>
+</body>
 
 </html>
